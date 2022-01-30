@@ -168,10 +168,40 @@
 
     </main>
 
+    <!--Tela de Confirmação do Pedido-->
+    <div class="confirmacao-pedido escondido fonte-roboto">
+        <div class="confirmacao-pedido__informacoes">
+            <h2>Confirme seu pedido</h2>
+            <div class="confirmacao-pedido__informacoes__pedidos">
+                <div>
+                    <span class="prato-escolhido">---</span>
+                    <span class="preco-prato-escolhido">---</span>
+                </div>
+                <div>
+                    <span class="bebida-escolhida">---</span>
+                    <span class="preco-bebida-escolhida">---</span>
+                </div>
+                <div>
+                    <span class="sobremesa-escolhida">---</span>
+                    <span class="preco-sobremesa-escolhida">---</span>
+                </div>
+                <div class="total">
+                    <span>TOTAL</span>
+                    <span class="preco-total">---</span>
+                </div>
+            </div>
+            <button class="confirmacao-pedido__botao-confimar" onclick="confimarPedido();"> Tudo certo, pode pedir!
+            </button>
+            <button class="confirmacao-pedido__botao-cancelar" onclick="cancelarPedido();"> Cancelar
+            </button>
+        </div>
+    </div>
+
     <!--Footer: fechamento do pedido-->
     <footer>
         <div class="fechar-pedido">
-            <button disabled class="fechar-pedido__botao fonte-roboto" onclick="fecharPedido();"> Selecione os 3 itens <br> para fechar o pedido
+            <button disabled class="fechar-pedido__botao fonte-roboto" onclick="fecharPedido();"> Selecione os 3 itens
+                <br> para fechar o pedido
             </button>
         </div>
     </footer>
