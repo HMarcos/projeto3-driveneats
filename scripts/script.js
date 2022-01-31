@@ -16,7 +16,7 @@ let enderecoUsuario = null;
 /* Seleciona o prato escolhido pelo usuário 
  enquanto desmarca o anterior */
 function selecionarPrato(classePrato, tituloPrato, precoPrato) {
-
+    
     // Recupera o prato selecionado anteriormente
     const pratoAnterior = document.querySelector(".pratos .selecionado");
     if (pratoAnterior !== null) {
@@ -41,7 +41,7 @@ function selecionarPrato(classePrato, tituloPrato, precoPrato) {
 /* Seleciona a bebida escolhida pelo usuário 
  enquanto desmarca a anterior */
 function selecionarBebida(classeBebida, tituloBebida, precoBebida) {
-
+    
     // Recupera a bebida selecionada anteriormente
     const bebidaAnterior = document.querySelector(".bebidas .selecionado");
     if (bebidaAnterior !== null) {
@@ -66,7 +66,7 @@ function selecionarBebida(classeBebida, tituloBebida, precoBebida) {
 /* Seleciona a sobremesa escolhida pelo usuário 
  enquanto desmarca a anterior */
 function selecionarSobremesa(classeSobremesa, tituloSobremesa, precoSobremesa) {
-
+    
     // Recupera a bebida selecionada anteriormente
     const sobremesaAnterior = document.querySelector(".sobremesas .selecionado");
     if (sobremesaAnterior !== null) {
@@ -91,6 +91,7 @@ function selecionarSobremesa(classeSobremesa, tituloSobremesa, precoSobremesa) {
 /*Habilita o botão para fechar o pedido,
   caso as três opções estejam selecionadas.*/
 function habilitarBotaoFecharPedido() {
+    
     // Verifica se há três opções selecionadas
     if ((pratoSelecionado !== null) &&
         (bebidaSelecionada !== null) &&
@@ -105,7 +106,7 @@ function habilitarBotaoFecharPedido() {
 
 /* Implementa o funcionamento do botão "Fechar Pedido */
 function fecharPedido() {
-    
+
     // Pergunta o nome e o endereço do usuário
     perguntarInformacoesDoUsuario();
 
@@ -121,23 +122,24 @@ function fecharPedido() {
 /* Monta o link e a mensagem para o redirecionamente até o Whatsapp*/
 function montarLInkWpp() {
     let linkBase = "https://wa.me/5584991656702?text=";
-    
+
     let precoTotal = precoSobremesaSelecionada + precoPratoSelecionado + precoBebidaSelecionada;
-    
+
     let mensagem = `Olá, gostaria de fazer o pedido:\n- Prato: ${pratoSelecionado}\n- Bebida: ${bebidaSelecionada}\n- Sobremesa: ${sobremesaSelecionada}\nTotal: R$ ${precoTotal.toFixed(2)}\n\nNome: ${nomeUsuario}\nEndereço: ${enderecoUsuario}`;
-    
+
     let mensagemCodificada = encodeURIComponent(mensagem);
     return (linkBase + mensagemCodificada);
 }
 
 /* Pergunta o nome e o endereço do usuário */
-function perguntarInformacoesDoUsuario(){
-    nomeUsuario = prompt("Informações do Usuário:\n Qual o seu nome? " );
+function perguntarInformacoesDoUsuario() {
+    nomeUsuario = prompt("Informações do Usuário:\n Qual o seu nome? ");
     enderecoUsuario = prompt("Informações do Usuário:\n Qual o seu endereço? (Logradouro, número, Bairro)");
 }
 
 /*  Preenche as informações na tela de confirmação do pedido*/
-function preencherInformacoesDoPedido(){
+function preencherInformacoesDoPedido() {
+    
     // Preenchendo as informações do prato
     document.querySelector(".prato-escolhido").innerHTML = pratoSelecionado;
     document.querySelector(".preco-prato-escolhido").innerHTML = precoPratoSelecionado.toFixed(2).toString().replace(".", ",");
@@ -152,13 +154,14 @@ function preencherInformacoesDoPedido(){
 
     // Total
     const precoTotal = precoBebidaSelecionada + precoPratoSelecionado + precoSobremesaSelecionada;
-    document.querySelector(".preco-total").innerHTML = "R$ "+ precoTotal.toFixed(2).toString().replace(".", ",");
+    document.querySelector(".preco-total").innerHTML = "R$ " + precoTotal.toFixed(2).toString().replace(".", ",");
 }
 
 /* Cancela o pedido do usuário 
     * Volta a tela inicial com as seleções prévias feitas pelo usuário.
 */
 function cancelarPedido() {
+   
     // Esconde a tela de confirmação do pedido
     const telaConfirmacaoPedido = document.querySelector(".confirmacao-pedido")
     telaConfirmacaoPedido.classList.add("escondido");
@@ -167,10 +170,9 @@ function cancelarPedido() {
 /* Confirma o pedido do usuário */
 function confimarPedido() {
 
-    
     //Monta o link do Wpp
     let linkWpp = montarLInkWpp();
-    
+
     // Abre o link do Wpp
     window.open(linkWpp);
 
